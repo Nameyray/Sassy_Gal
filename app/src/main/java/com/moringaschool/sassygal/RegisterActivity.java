@@ -19,30 +19,32 @@ public class RegisterActivity extends AppCompatActivity {
     @BindView(R.id.textView4)
     TextView btn;
     @BindView(R.id.editTextTextPersonName2)
-    EditText TextPersonName2;
+    EditText textPersonName2;
     @BindView(R.id.editTextTextEmailAddress)
-    EditText TextEmailAddress;
+    EditText textEmailAddress;
     @BindView(R.id.editTextTextPassword)
-    EditText TextPassword;
+    EditText textPassword;
     @BindView(R.id.button3)
     Button btnRegister;
-//    TextView btn;
-//    private EditText TextPersonName2, TextEmailAddress, TextPassword;
-//    Button btnRegister;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        //login if already registered
+        TextView log = findViewById(R.id.textView4);
+        log.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+            }
+        });
+
         //binding the properties using butterknife
         ButterKnife.bind(this);
 
-//        btn= findViewById(R.id.textView4);
-//        TextPersonName2= findViewById(R.id.editTextTextPersonName2);
-//        TextEmailAddress= findViewById(R.id.editTextTextEmailAddress);
-//        TextPassword= findViewById(R.id.editTextTextPassword);
-//        btnRegister=findViewById(R.id.button3);
         btnRegister.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -65,18 +67,18 @@ public class RegisterActivity extends AppCompatActivity {
 
     //method to check the register method credentials
     private void checkCredentials() {
-        String textPersonName2= TextPersonName2.getText().toString();
-        String EmailAddress = TextEmailAddress.getText().toString();
-        String Password = TextPassword.getText().toString();
+        String personName2 = textPersonName2.getText().toString();
+        String emailAddress = textEmailAddress.getText().toString();
+        String password = textPassword.getText().toString();
 
-        if (textPersonName2.isEmpty() || TextPersonName2.length()<3){
-            showError(TextPersonName2, "Your name is not valid");
+        if (personName2.isEmpty() || textPersonName2.length()<3){
+            showError( "Your name is not valid");
 
-        }else if (EmailAddress.isEmpty()  || !EmailAddress.contains("@")){
-            showError(TextEmailAddress, "Email is not valid");
+        }else if (emailAddress.isEmpty()  || !emailAddress.contains("@")){
+            showError( "Email is not valid");
 
-        }else if(Password.isEmpty()  ||Password.length()<3){
-            showError(TextPassword, "Password must be 3 characters");
+        }else if(password.isEmpty()  ||password.length()<3){
+            showError( "Password must be 3 characters");
         }else{
 
             //create a toast popup for the register activity
@@ -85,9 +87,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     //method to show error
-    private void showError(EditText input, String string) {
-        input.setError(string);
-        input.requestFocus();
+    private void showError( String string) {
+        Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
 
         }
 
