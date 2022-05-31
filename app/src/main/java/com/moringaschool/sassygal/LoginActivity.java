@@ -20,9 +20,9 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.textView7)
     TextView btn;
     @BindView(R.id.editTextTextEmailAddress)
-    EditText TextEmailAddress;
+    EditText textEmailAddress;
     @BindView(R.id.editTextTextPassword)
-    EditText TextPassword;
+    EditText textPassword;
     @BindView(R.id.button4)
     Button btnLogin;
 
@@ -63,15 +63,15 @@ public class LoginActivity extends AppCompatActivity {
     }
     //Method to check the credentials for logging in
     private void checkCredentials() {
-        String EmailAddress = TextEmailAddress.getText().toString();
-        String Password = TextPassword.getText().toString();
+        String emailAddress = textEmailAddress.getText().toString();
+        String password = textPassword.getText().toString();
 
     //if else statement to ensure right credentials are entered
-        if (EmailAddress.isEmpty()  || !EmailAddress.contains("@")){
-            showError(TextEmailAddress, "Email is not valid");
+        if (emailAddress.isEmpty()  || !emailAddress.contains("@")){
+            showError("Email is not valid");
 
-        }else if(Password.isEmpty()  ||Password.length()<3){
-            showError(TextPassword, "Password must be 3 characters");
+        }else if(password.isEmpty()  ||password.length()<3){
+            showError("Password must be 3 characters");
         }else{
             //create a toast popup for the login method
             Toast.makeText(this, "Login method", Toast.LENGTH_SHORT).show();
@@ -79,9 +79,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //method to show error
-    private void showError(EditText input, String string) {
-        input.setError(string);
-        input.requestFocus();
+    private void showError( String string) {
+        Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
 
     }
 

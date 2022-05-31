@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 public class ProductListActivity extends AppCompatActivity {
    //defining the list
     @BindView(R.id.list)
-    List mList;
+    ListView mList;
 
   //arraylist for the name of products
     private String[] products= new String[] {
@@ -41,7 +41,9 @@ public class ProductListActivity extends AppCompatActivity {
 
      //invoking the custom array adapter for the product list
         ProductListArrayAdapter adapter = new ProductListArrayAdapter
-                (this, android.R.layout.activity_list_item, products, uses);
+                (this, android.R.layout.simple_list_item_1, products, uses);
+
+        mList.setAdapter(adapter);
 
 
 

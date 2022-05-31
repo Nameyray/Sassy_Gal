@@ -21,7 +21,7 @@ public class ProductListArrayAdapter extends ArrayAdapter {
     //overriding the method for some of the arrayAdapters methods getItem() and getCount()
     @Override
     public Object getItem(int position) {
-        String products = mProducts [position];
+        String products = mProducts[position];
         String uses = mUses[position];
         return String.format("%s \nUsed for: %s", products, uses);
 
