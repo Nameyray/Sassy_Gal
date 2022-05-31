@@ -1,3 +1,4 @@
+
 package com.moringaschool.sassygal;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,39 +14,36 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RegisterActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    //declaring the properties in Register activity
-    @BindView(R.id.textView4)
+    //declaring the properties to be used in the login activity
+    @BindView(R.id.textView7)
     TextView btn;
-    @BindView(R.id.editTextTextPersonName2)
-    EditText textPersonName2;
     @BindView(R.id.editTextTextEmailAddress)
     EditText textEmailAddress;
     @BindView(R.id.editTextTextPassword)
     EditText textPassword;
-    @BindView(R.id.button3)
-    Button btnRegister;
-
+    @BindView(R.id.button4)
+    Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_login2);
 
-        //login if already registered
-        TextView log = findViewById(R.id.textView4);
+        //Register if not registered
+        TextView log = findViewById(R.id.textView7);
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
             }
         });
 
-        //binding the properties using butterknife
+
         ButterKnife.bind(this);
 
-        btnRegister.setOnClickListener(new View.OnClickListener(){
+        btnLogin.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
@@ -54,35 +52,30 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        //onclickListener method for the button
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, ProductListActivity.class);
+                Intent intent = new Intent(LoginActivity.this, ProductListActivity.class);
                 startActivity(intent);
             }
+
         });
 
     }
-
-    //method to check the register method credentials
+    //Method to check the credentials for logging in
     private void checkCredentials() {
-        String personName2 = textPersonName2.getText().toString();
         String emailAddress = textEmailAddress.getText().toString();
         String password = textPassword.getText().toString();
 
-        if (personName2.isEmpty() || textPersonName2.length()<3){
-            showError( "Your name is not valid");
-
-        }else if (emailAddress.isEmpty()  || !emailAddress.contains("@")){
-            showError( "Email is not valid");
+    //if else statement to ensure right credentials are entered
+        if (emailAddress.isEmpty()  || !emailAddress.contains("@")){
+            showError("Email is not valid");
 
         }else if(password.isEmpty()  ||password.length()<3){
-            showError( "Password must be 3 characters");
+            showError("Password must be 3 characters");
         }else{
-
-            //create a toast popup for the register activity
-            Toast.makeText(this, "Registration method", Toast.LENGTH_SHORT).show();
+            //create a toast popup for the login method
+            Toast.makeText(this, "Login method", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -90,7 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void showError( String string) {
         Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
 
-        }
 
     }
 
+}
