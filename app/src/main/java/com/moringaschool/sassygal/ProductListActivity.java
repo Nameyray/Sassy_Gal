@@ -47,7 +47,5 @@ public class ProductListActivity extends AppCompatActivity {
 
 
 
-
-
     }
 }

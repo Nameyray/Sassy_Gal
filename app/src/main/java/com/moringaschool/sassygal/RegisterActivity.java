@@ -26,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText textPassword;
     @BindView(R.id.button3)
     Button btnRegister;
+    private EditText editTextTextPersonName2, editTextTextEmailAddress, editTextTextPassword;
 
 
     @Override
@@ -35,6 +36,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         //login if already registered
         TextView log = findViewById(R.id.textView4);
+        editTextTextPersonName2= findViewById(R.id.editTextTextPersonName2);
+        editTextTextEmailAddress= findViewById(R.id.editTextTextEmailAddress);
+        editTextTextPassword = findViewById(R.id.editTextTextPassword);
+
+
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
