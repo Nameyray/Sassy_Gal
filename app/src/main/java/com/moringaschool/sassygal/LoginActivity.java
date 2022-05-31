@@ -1,65 +1,66 @@
-//package com.moringaschool.sassygal;
-//
-//import androidx.appcompat.app.AppCompatActivity;
-//
-//import android.content.Intent;
-//import android.os.Bundle;
-//import android.view.View;
-//import android.widget.Button;
-//import android.widget.EditText;
-//import android.widget.TextView;
-//import android.widget.Toast;
-//
-//import butterknife.BindView;
-//import butterknife.ButterKnife;
-//
-//public class LoginActivity extends AppCompatActivity {
-//
-//    //declaring the properties to be used in the login activity
-//    @BindView(R.id.textView7)
+
+package com.moringaschool.sassygal;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class LoginActivity extends AppCompatActivity {
+
+    //declaring the properties to be used in the login activity
+    @BindView(R.id.textView7)
+    TextView btn;
+    @BindView(R.id.editTextTextEmailAddress)
+    EditText TextEmailAddress;
+    @BindView(R.id.editTextTextPassword)
+    EditText TextPassword;
+    @BindView(R.id.button4)
+    Button btnLogin;
+
 //    TextView btn;
-//    @BindView(R.id.editTextTextEmailAddress)
-//    EditText TextEmailAddress;
-//    @BindView(R.id.editTextTextPassword)
-//    EditText TextPassword;
-//    @BindView(R.id.button4)
+//    EditText TextEmailAddress, TextPassword;
 //    Button btnLogin;
-//
-////    TextView btn;
-////    EditText TextEmailAddress, TextPassword;
-////    Button btnLogin;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_login2);
-//
-//        //binding the properties using butterknife
-//        ButterKnife.bind(this);
-//
-////        btn= findViewById(R.id.textView7);
-////        TextEmailAddress= findViewById(R.id.editTextTextEmailAddress);
-////        TextPassword= findViewById(R.id.editTextTextPassword);
-////        btnLogin=findViewById(R.id.button4);
-//        btnLogin.setOnClickListener(new View.OnClickListener(){
-//
-//            @Override
-//            public void onClick(View v) {
-//                checkCredentials();
-//
-//            }
-//        });
-//
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(LoginActivity.this, ProductLIstActivity.class);
-//                startActivity(intent);
-//            }
-//
-//        });
-//
-//    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login2);
+
+        //binding the properties using butterknife
+        ButterKnife.bind(this);
+
+//        btn= findViewById(R.id.textView7);
+//        TextEmailAddress= findViewById(R.id.editTextTextEmailAddress);
+//        TextPassword= findViewById(R.id.editTextTextPassword);
+//        btnLogin=findViewById(R.id.button4);
+        btnLogin.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                checkCredentials();
+
+            }
+        });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, ProductLIstActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+    }
 //    //Method to check the credentials for logging in
 //    private void checkCredentials() {
 //        String EmailAddress = TextEmailAddress.getText().toString();
@@ -83,5 +84,5 @@
 //        input.requestFocus();
 //
 //    }
-//
-//}
+
+}
