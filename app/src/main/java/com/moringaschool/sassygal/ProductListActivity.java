@@ -15,7 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ProductLIstActivity extends AppCompatActivity {
+public class ProductListActivity extends AppCompatActivity {
    //defining the list
     @BindView(R.id.list)
     List mList;
