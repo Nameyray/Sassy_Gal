@@ -1,48 +1,48 @@
-//package com.moringaschool.sassygal;
-//
-//import androidx.appcompat.app.AppCompatActivity;
-//
-//import android.content.Intent;
-//import android.os.Bundle;
-//import android.view.View;
-//import android.widget.Button;
-//import android.widget.EditText;
-//import android.widget.TextView;
-//import android.widget.Toast;
-//
-//import butterknife.BindView;
-//import butterknife.ButterKnife;
-//
-//public class RegisterActivity extends AppCompatActivity {
-//
-//    //declaring the properties in Register activity
-//    @BindView(R.id.textView4)
+package com.moringaschool.sassygal;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class RegisterActivity extends AppCompatActivity {
+
+    //declaring the properties in Register activity
+    @BindView(R.id.textView4)
+    TextView btn;
+    @BindView(R.id.editTextTextPersonName2)
+    EditText TextPersonName2;
+    @BindView(R.id.editTextTextEmailAddress)
+    EditText TextEmailAddress;
+    @BindView(R.id.editTextTextPassword)
+    EditText TextPassword;
+    @BindView(R.id.button3)
+    Button btnRegister;
 //    TextView btn;
-//    @BindView(R.id.editTextTextPersonName2)
-//    EditText TextPersonName2;
-//    @BindView(R.id.editTextTextEmailAddress)
-//    EditText TextEmailAddress;
-//    @BindView(R.id.editTextTextPassword)
-//    EditText TextPassword;
-//    @BindView(R.id.button3)
+//    private EditText TextPersonName2, TextEmailAddress, TextPassword;
 //    Button btnRegister;
-////    TextView btn;
-////    private EditText TextPersonName2, TextEmailAddress, TextPassword;
-////    Button btnRegister;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_register);
-//
-//        //binding the properties using butterknife
-//        ButterKnife.bind(this);
-//
-////        btn= findViewById(R.id.textView4);
-////        TextPersonName2= findViewById(R.id.editTextTextPersonName2);
-////        TextEmailAddress= findViewById(R.id.editTextTextEmailAddress);
-////        TextPassword= findViewById(R.id.editTextTextPassword);
-////        btnRegister=findViewById(R.id.button3);
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register);
+
+        //binding the properties using butterknife
+        ButterKnife.bind(this);
+
+//        btn= findViewById(R.id.textView4);
+//        TextPersonName2= findViewById(R.id.editTextTextPersonName2);
+//        TextEmailAddress= findViewById(R.id.editTextTextEmailAddress);
+//        TextPassword= findViewById(R.id.editTextTextPassword);
+//        btnRegister=findViewById(R.id.button3);
 //        btnRegister.setOnClickListener(new View.OnClickListener(){
 //
 //            @Override
@@ -90,7 +90,6 @@
 //        input.requestFocus();
 //
 //        }
-//
-//    }
-//
-//
+
+    }
+
