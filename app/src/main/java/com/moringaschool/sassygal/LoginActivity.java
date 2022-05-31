@@ -61,28 +61,28 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
-//    //Method to check the credentials for logging in
-//    private void checkCredentials() {
-//        String EmailAddress = TextEmailAddress.getText().toString();
-//        String Password = TextPassword.getText().toString();
-//
-//    //if else statement to ensure right credentials are entered
-//        if (EmailAddress.isEmpty()  || !EmailAddress.contains("@")){
-//            showError(TextEmailAddress, "Email is not valid");
-//
-//        }else if(Password.isEmpty()  ||Password.length()<3){
-//            showError(TextPassword, "Password must be 3 characters");
-//        }else{
-//            //create a toast popup for the login method
-//            Toast.makeText(this, "Login method", Toast.LENGTH_SHORT).show();
-//        }
-//    }
-//
-//    //method to show error
-//    private void showError(EditText input, String string) {
-//        input.setError(string);
-//        input.requestFocus();
-//
-//    }
+    //Method to check the credentials for logging in
+    private void checkCredentials() {
+        String EmailAddress = TextEmailAddress.getText().toString();
+        String Password = TextPassword.getText().toString();
+
+    //if else statement to ensure right credentials are entered
+        if (EmailAddress.isEmpty()  || !EmailAddress.contains("@")){
+            showError(TextEmailAddress, "Email is not valid");
+
+        }else if(Password.isEmpty()  ||Password.length()<3){
+            showError(TextPassword, "Password must be 3 characters");
+        }else{
+            //create a toast popup for the login method
+            Toast.makeText(this, "Login method", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //method to show error
+    private void showError(EditText input, String string) {
+        input.setError(string);
+        input.requestFocus();
+
+    }
 
 }
