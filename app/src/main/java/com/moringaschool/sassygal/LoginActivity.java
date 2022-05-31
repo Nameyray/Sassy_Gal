@@ -26,22 +26,23 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.button4)
     Button btnLogin;
 
-//    TextView btn;
-//    EditText TextEmailAddress, TextPassword;
-//    Button btnLogin;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
-        //binding the properties using butterknife
+        //Register if not registered
+        TextView log = findViewById(R.id.textView7);
+        log.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            }
+        });
+
+
         ButterKnife.bind(this);
 
-//        btn= findViewById(R.id.textView7);
-//        TextEmailAddress= findViewById(R.id.editTextTextEmailAddress);
-//        TextPassword= findViewById(R.id.editTextTextPassword);
-//        btnLogin=findViewById(R.id.button4);
         btnLogin.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -81,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
     //method to show error
     private void showError( String string) {
         Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
+
 
     }
 
