@@ -36,53 +36,49 @@ public class LoginActivity extends AppCompatActivity {
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
 
 
         ButterKnife.bind(this);
 
-        btnLogin.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                checkCredentials();
-
-            }
-        });
-
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, ProductListActivity.class);
-                startActivity(intent);
+                if (checkCredentials()) {
+                    Intent intent = new Intent(LoginActivity.this, ProductListActivity.class);
+                    startActivity(intent);
+                }
             }
 
         });
 
     }
     //Method to check the credentials for logging in
-    private void checkCredentials() {
+
+    private boolean checkCredentials () {
         String emailAddress = textEmailAddress.getText().toString();
         String password = textPassword.getText().toString();
+        boolean isCorrect = false;
 
-    //if else statement to ensure right credentials are entered
-        if (emailAddress.isEmpty()  || !emailAddress.contains("@")){
+        //if else statement to ensure right credentials are entered
+        if (emailAddress.isEmpty() || !emailAddress.contains("@")) {
             showError("Email is not valid");
 
-        }else if(password.isEmpty()  ||password.length()<3){
+        } else if (password.isEmpty() || password.length() < 3) {
             showError("Password must be 3 characters");
-        }else{
+        } else {
             //create a toast popup for the login method
             Toast.makeText(this, "Login method", Toast.LENGTH_SHORT).show();
+            isCorrect = true;
         }
+        return isCorrect;
     }
 
     //method to show error
-    private void showError( String string) {
+    private void showError (String string){
         Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
-
 
     }
 
