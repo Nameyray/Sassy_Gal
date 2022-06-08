@@ -9,13 +9,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.moringaschool.sassygal.R;
-import com.moringaschool.sassygal.connection.MakeupClient;
-import com.moringaschool.sassygal.models.Response;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
 
 public class ProductSearchActivity extends AppCompatActivity {
 
@@ -43,36 +38,36 @@ public class ProductSearchActivity extends AppCompatActivity {
             }
         });
 
-//        //onclickListener method for the button
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                    Intent intent = new Intent(ProductSearchActivity.this, SearchBrandActivity.class);
-//                    startActivity(intent);
-//                }
-//        });
-//
-//    }
-    //onclickListener method for the button
+        //onclickListener method for the button
         button.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-        Response response = MakeupClient.getClient().searchResponse(Response.class);
-        Call<Response> call = Response.getAllData();
-            call.enqueue(new Callback<Response>(){
-                @Override
-                public void onResponse(Call<Response> call, Response<Response> response) {
+            @Override
+            public void onClick(View v) {
 
+                    Intent intent = new Intent(ProductSearchActivity.this, SearchBrandActivity.class);
+                    startActivity(intent);
                 }
+        });
 
-                @Override
-                public void onFailure(Call<Response> call, Throwable t) {
-
-
-                }
-            }
-
-    });
+    }
+//    //onclickListener method for the button
+//        button.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//        Response response = MakeupClient.getClient().searchResponse(Response.class);
+//        Call<Response> call = Response.getAllData();
+//            call.enqueue(new Callback<Response>(){
+//                @Override
+//                public void onResponse(Call<Response> call, Response<Response> response) {
+//
+//                }
+//
+//                @Override
+//                public void onFailure(Call<Response> call, Throwable t) {
+//
+//
+//                }
+//            }
+//
+//    });
 
 }
