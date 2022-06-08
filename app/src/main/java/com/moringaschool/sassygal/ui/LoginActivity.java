@@ -1,5 +1,5 @@
 
-package com.moringaschool.sassygal;
+package com.moringaschool.sassygal.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.moringaschool.sassygal.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (checkCredentials()) {
-                    Intent intent = new Intent(LoginActivity.this, ProductListActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, ProductSearchActivity.class);
                     startActivity(intent);
                 }
             }
