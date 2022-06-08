@@ -29,7 +29,7 @@ public class SearchBrandActivity extends AppCompatActivity implements View.OnCli
         //Binding the properties using Butter knife
         ButterKnife.bind(this);
 
-        //onclickListener method for the button
+        //onclickListener method for the search button
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
