@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.moringaschool.sassygal">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,10 +16,13 @@
         android:theme="@style/Theme.SassyGal"
         tools:targetApi="31">
         <activity
-            android:name=".SearchBrandActivity"
+            android:name=".ui.SearchBrandActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductSearchActivity"
+            android:name=".ui.ViewProducts"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ProductSearchActivity"
             android:exported="false" />
         <activity
             android:name=".ui.RegisterActivity"
