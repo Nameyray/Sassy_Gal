@@ -1,5 +1,6 @@
 package com.moringaschool.sassygal.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -46,8 +47,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        Glide.with(context).asDrawable().load(list.get(position)).into(holder.img);
+    public void onBindViewHolder(@NonNull MyHolder holder, @SuppressLint("RecyclerView") int position) {
+        Glide.with(context).asBitmap()
+                .placeholder(R.drawable.img_1)
+                .load(list.get(position)
+                        .getImageLink())
+                .into(holder.img);
+        holder.title.setText(list.get(position).getName());
+        holder.desc.setText(list.get(position).getDescription());
 
 
 
