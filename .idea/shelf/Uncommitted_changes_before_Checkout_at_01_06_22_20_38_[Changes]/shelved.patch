@@ -1,0 +1,37 @@
+Index: app/src/main/res/layout/activity_register.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    tools:context=\".RegisterActivity\">\n\n    <TextView\n        android:id=\"@+id/logintext\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"80dp\"\n        android:layout_marginTop=\"48dp\"\n        android:text=\"Register\"\n        android:textColor=\"@color/pink\"\n        android:textSize=\"23sp\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n\n    <EditText\n        android:id=\"@+id/editTextTextPersonName2\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"63dp\"\n        android:layout_marginBottom=\"58dp\"\n        android:drawableLeft=\"@drawable/ic_baseline_person\"\n        android:drawablePadding=\"10dp\"\n        android:ems=\"10\"\n        android:inputType=\"textPersonName\"\n        android:text=\"Name\"\n        app:layout_constraintBottom_toTopOf=\"@+id/editTextTextEmailAddress\"\n        app:layout_constraintEnd_toEndOf=\"@+id/editTextTextEmailAddress\"\n        app:layout_constraintStart_toStartOf=\"@+id/editTextTextEmailAddress\"\n        app:layout_constraintTop_toBottomOf=\"@+id/logintext\" />\n\n    <EditText\n        android:id=\"@+id/editTextTextEmailAddress\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"56dp\"\n        android:layout_marginBottom=\"44dp\"\n        android:drawableLeft=\"@drawable/ic_baseline_email_24\"\n        android:drawablePadding=\"10dp\"\n        android:ems=\"10\"\n        android:hint=\"rachel@raych.com\"\n        android:inputType=\"textEmailAddress\"\n        app:layout_constraintBottom_toTopOf=\"@+id/editTextTextPassword\"\n        app:layout_constraintStart_toStartOf=\"parent\" />\n\n    <EditText\n        android:id=\"@+id/editTextTextPassword\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"2dp\"\n        android:layout_marginBottom=\"388dp\"\n        android:drawableLeft=\"@drawable/ic_baseline_security_24\"\n        android:drawablePadding=\"10dp\"\n        android:ems=\"10\"\n        android:hint=\"password\"\n        android:inputType=\"textPassword\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"@+id/editTextTextEmailAddress\" />\n\n    <Button\n        android:id=\"@+id/button3\"\n        android:layout_width=\"0dp\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"44dp\"\n        android:layout_marginEnd=\"208dp\"\n        android:background=\"@color/pink\"\n        android:text=\"Register\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/editTextTextPassword\" />\n\n    <TextView\n        android:id=\"@+id/textView3\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"51dp\"\n        android:layout_marginTop=\"35dp\"\n        android:layout_marginEnd=\"49dp\"\n        android:text=\"Already have an account?\"\n        android:textSize=\"15sp\"\n        app:layout_constraintEnd_toStartOf=\"@+id/textView4\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/button3\" />\n\n    <TextView\n        android:id=\"@+id/textView4\"\n        android:layout_width=\"0dp\"\n        android:layout_height=\"17dp\"\n        android:layout_marginEnd=\"39dp\"\n        android:autoLink=\"web\"\n        android:linksClickable=\"true\"\n        android:text=\"Login\"\n        android:textColor=\"@color/pink\"\n        app:layout_constraintBaseline_toBaselineOf=\"@+id/textView3\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toEndOf=\"@+id/textView3\" />\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_register.xml b/app/src/main/res/layout/activity_register.xml
+--- a/app/src/main/res/layout/activity_register.xml	(revision f7234cfd6057f11bb2b7b9ceea7e52677bf784d1)
++++ b/app/src/main/res/layout/activity_register.xml	(date 1654104400075)
+@@ -22,7 +22,7 @@
+         android:id="@+id/editTextTextPersonName2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginTop="63dp"
++        android:layout_marginStart="56dp"
+         android:layout_marginBottom="58dp"
+         android:drawableLeft="@drawable/ic_baseline_person"
+         android:drawablePadding="10dp"
+@@ -30,8 +30,7 @@
+         android:inputType="textPersonName"
+         android:text="Name"
+         app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
+-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
+-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
++        app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/logintext" />
+ 
+     <EditText
+@@ -92,6 +91,7 @@
+         android:layout_height="17dp"
+         android:layout_marginEnd="39dp"
+         android:autoLink="web"
++        android:clickable="true"
+         android:linksClickable="true"
+         android:text="Login"
+         android:textColor="@color/pink"

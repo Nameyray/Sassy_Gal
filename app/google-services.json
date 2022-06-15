@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "938957071270",
+    "project_id": "sassy-gal",
+    "storage_bucket": "sassy-gal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938957071270:android:32272a4efcd6f19545a567",
+        "android_client_info": {
+          "package_name": "com.moringaschool.sassygal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938957071270-h3s6fopvggacf2046rjce23fg7cae6kd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANAxYpH9hP4XgYXuyYJF1JY4rfXO16syc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "938957071270-h3s6fopvggacf2046rjce23fg7cae6kd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,4 @@
-package com.moringaschool.sassygal;
-
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
+package com.moringaschool.sassygal.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.moringaschool.sassygal.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

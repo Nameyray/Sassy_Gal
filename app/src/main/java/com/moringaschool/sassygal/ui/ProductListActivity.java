@@ -1,4 +1,4 @@
-package com.moringaschool.sassygal;
+package com.moringaschool.sassygal.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.moringaschool.sassygal.ProductListArrayAdapter;
+import com.moringaschool.sassygal.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +47,6 @@ public class ProductListActivity extends AppCompatActivity {
                 (this, android.R.layout.simple_list_item_1, products, uses);
 
         mList.setAdapter(adapter);
-
-
 
 
 
