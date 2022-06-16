@@ -65,6 +65,8 @@ public class Response implements Serializable {
     @SerializedName("product_colors")
     @Expose
     private List<com.moringaschool.sassygal.models.ProductColor> productColors = null;
+    private String pushId;
+
 
     /**
      * No args constructor for use in serialization
@@ -268,6 +270,14 @@ public class Response implements Serializable {
 
     public void setProductColors(List<ProductColor> productColors) {
         this.productColors = productColors;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
 }

@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.sassygal.R;
 
 import butterknife.BindView;
@@ -21,6 +24,10 @@ public class SearchBrandActivity extends AppCompatActivity implements View.OnCli
     @BindView(R.id.back_button)
     Button back;
 
+
+    private FirebaseDatabase db = FirebaseDatabase.getInstance();
+    private DatabaseReference root = db.getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +36,7 @@ public class SearchBrandActivity extends AppCompatActivity implements View.OnCli
         //Binding the properties using Butter knife
         ButterKnife.bind(this);
 
+
         //onclickListener method for the search button
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +44,7 @@ public class SearchBrandActivity extends AppCompatActivity implements View.OnCli
 
                 Intent intent = new Intent(SearchBrandActivity.this, ViewProducts.class);
                 startActivity(intent);
-            }
+        }
         });
 
     }

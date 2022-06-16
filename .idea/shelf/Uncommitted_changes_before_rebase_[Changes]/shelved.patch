@@ -1,0 +1,494 @@
+Index: app/src/main/java/com/moringaschool/sassygal/ui/LoginActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\npackage com.moringaschool.sassygal.ui;\n\nimport androidx.appcompat.app.AppCompatActivity;\n\nimport android.content.Intent;\nimport android.os.Bundle;\nimport android.view.View;\nimport android.widget.Button;\nimport android.widget.EditText;\nimport android.widget.TextView;\nimport android.widget.Toast;\n\nimport com.moringaschool.sassygal.R;\n\nimport butterknife.BindView;\nimport butterknife.ButterKnife;\n\npublic class LoginActivity extends AppCompatActivity {\n\n    //declaring the properties to be used in the login activity\n    @BindView(R.id.textView7)\n    TextView btn;\n    @BindView(R.id.editTextTextEmailAddress)\n    EditText textEmailAddress;\n    @BindView(R.id.editTextTextPassword)\n    EditText textPassword;\n    @BindView(R.id.button4)\n    Button btnLogin;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_login2);\n\n        //Register if not registered\n        TextView log = findViewById(R.id.textView7);\n        log.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View v) {\n                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));\n            }\n        });\n\n\n        ButterKnife.bind(this);\n\n        btnLogin.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View v) {\n                if (checkCredentials()) {\n                    Intent intent = new Intent(LoginActivity.this, ProductSearchActivity.class);\n                    startActivity(intent);\n                }\n            }\n\n        });\n\n    }\n    //Method to check the credentials for logging in\n\n    private boolean checkCredentials () {\n        String emailAddress = textEmailAddress.getText().toString();\n        String password = textPassword.getText().toString();\n        boolean isCorrect = false;\n\n        //if else statement to ensure right credentials are entered\n        if (emailAddress.isEmpty() || !emailAddress.contains(\"@\")) {\n            showError(\"Email is not valid\");\n\n        } else if (password.isEmpty() || password.length() < 3) {\n            showError(\"Password must be 3 characters\");\n        } else {\n            //create a toast popup for the login method\n            Toast.makeText(this, \"Login method\", Toast.LENGTH_SHORT).show();\n            isCorrect = true;\n        }\n        return isCorrect;\n    }\n\n    //method to show error\n    private void showError (String string){\n        Toast.makeText(this, string, Toast.LENGTH_SHORT).show();\n\n    }\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/moringaschool/sassygal/ui/LoginActivity.java b/app/src/main/java/com/moringaschool/sassygal/ui/LoginActivity.java
+--- a/app/src/main/java/com/moringaschool/sassygal/ui/LoginActivity.java	(revision 0b01a029fc7a831dce7559c3c2c9060f2529874d)
++++ b/app/src/main/java/com/moringaschool/sassygal/ui/LoginActivity.java	(date 1654955606287)
+@@ -16,7 +16,7 @@
+ import butterknife.BindView;
+ import butterknife.ButterKnife;
+ 
+-public class LoginActivity extends AppCompatActivity {
++public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+ 
+     //declaring the properties to be used in the login activity
+     @BindView(R.id.textView7)
+@@ -32,19 +32,17 @@
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_login2);
+-
+-        //Register if not registered
+-        TextView log = findViewById(R.id.textView7);
+-        log.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View v) {
+-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+-            }
+-        });
+-
+-
+         ButterKnife.bind(this);
+ 
++
++//        TextView log = findViewById(R.id.textView7);
++//        log.setOnClickListener(new View.OnClickListener() {
++//            @Override
++//            public void onClick(View v) {
++//                startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class));
++//            }
++//        });
++
+         btnLogin.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+@@ -81,7 +79,18 @@
+     //method to show error
+     private void showError (String string){
+         Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
++//Register if not registered
++        btn.setOnClickListener(this);
++
++    }
+ 
+-    }
++    @Override
++    public void onClick(View view) {
++        if (view == btn) {
++            Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
++            startActivity(intent);
++            finish();
++        }
+ 
++    }
+ }
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    package=\"com.moringaschool.sassygal\">\n\n    <uses-permission android:name=\"android.permission.INTERNET\"/>\n\n    <application\n        android:allowBackup=\"true\"\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\n        android:fullBackupContent=\"@xml/backup_rules\"\n        android:icon=\"@mipmap/ic_launcher\"\n        android:label=\"@string/app_name\"\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\n        android:supportsRtl=\"true\"\n        android:theme=\"@style/Theme.SassyGal\"\n        tools:targetApi=\"31\">\n        <activity\n            android:name=\".ui.SearchBrandActivity\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".ui.ViewProducts\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".ui.ProductSearchActivity\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".ui.RegisterActivity\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".ui.LoginActivity\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".ui.ProductListActivity\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".ui.MainActivity\"\n            android:exported=\"true\">\n            <intent-filter>\n                <action android:name=\"android.intent.action.MAIN\" />\n\n                <category android:name=\"android.intent.category.LAUNCHER\" />\n            </intent-filter>\n        </activity>\n    </application>\n\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 0b01a029fc7a831dce7559c3c2c9060f2529874d)
++++ b/app/src/main/AndroidManifest.xml	(date 1655054067799)
+@@ -13,7 +13,7 @@
+         android:label="@string/app_name"
+         android:roundIcon="@mipmap/ic_launcher_round"
+         android:supportsRtl="true"
+-        android:theme="@style/Theme.SassyGal"
++        android:theme="@style/AppTheme">
+         tools:targetApi="31">
+         <activity
+             android:name=".ui.SearchBrandActivity"
+@@ -25,22 +25,23 @@
+             android:name=".ui.ProductSearchActivity"
+             android:exported="false" />
+         <activity
+-            android:name=".ui.RegisterActivity"
++            android:name=".ui.CreateAccountActivity"
+             android:exported="false" />
+         <activity
+             android:name=".ui.LoginActivity"
+-            android:exported="false" />
++            android:exported="true">
++        <intent-filter>
++            <action android:name="android.intent.action.MAIN" />
++            <category android:name="android.intent.category.LAUNCHER" />
++        </intent-filter>
++        </activity>
+         <activity
+             android:name=".ui.ProductListActivity"
+             android:exported="false" />
+         <activity
+             android:name=".ui.MainActivity"
+             android:exported="true">
+-            <intent-filter>
+-                <action android:name="android.intent.action.MAIN" />
+ 
+-                <category android:name="android.intent.category.LAUNCHER" />
+-            </intent-filter>
+         </activity>
+     </application>
+ 
+Index: app/src/main/java/com/moringaschool/sassygal/ui/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.moringaschool.sassygal.ui;\n\nimport androidx.appcompat.app.AppCompatActivity;\n\nimport android.content.Intent;\nimport android.os.Bundle;\nimport android.view.View;\nimport android.widget.Button;\n\nimport com.moringaschool.sassygal.R;\n\nimport butterknife.BindView;\nimport butterknife.ButterKnife;\n\npublic class MainActivity extends AppCompatActivity {\n    @BindView(R.id.button)\n    Button button;\n\n\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_main);\n\n        ButterKnife.bind(this);\n        Button button = (Button)findViewById(R.id.button);\n        button.setOnClickListener(new View.OnClickListener(){\n            @Override\n            public void onClick(View v) {\n                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);\n                startActivity(intent);\n            }\n        });\n\n    }\n\n}\n\n\n\n\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/moringaschool/sassygal/ui/MainActivity.java b/app/src/main/java/com/moringaschool/sassygal/ui/MainActivity.java
+--- a/app/src/main/java/com/moringaschool/sassygal/ui/MainActivity.java	(revision 0b01a029fc7a831dce7559c3c2c9060f2529874d)
++++ b/app/src/main/java/com/moringaschool/sassygal/ui/MainActivity.java	(date 1655066426359)
+@@ -1,18 +1,26 @@
+ package com.moringaschool.sassygal.ui;
+ 
++import androidx.annotation.NonNull;
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+ import android.content.Intent;
+ import android.os.Bundle;
++import android.view.Menu;
++import android.view.MenuInflater;
++import android.view.MenuItem;
+ import android.view.View;
+ import android.widget.Button;
+ 
++import com.google.firebase.auth.FirebaseAuth;
++import com.google.firebase.auth.FirebaseUser;
+ import com.moringaschool.sassygal.R;
+ 
+ import butterknife.BindView;
+ import butterknife.ButterKnife;
+ 
+ public class MainActivity extends AppCompatActivity {
++    private FirebaseAuth mAuth;
++    private FirebaseAuth.AuthStateListener mAuthListener;
+     @BindView(R.id.button)
+     Button button;
+ 
+@@ -23,16 +31,57 @@
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main);
+ 
++        mAuth = FirebaseAuth.getInstance();
++        mAuthListener = new FirebaseAuth.AuthStateListener() {
++            //welcome message after a user logs in
++            @Override
++            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
++                FirebaseUser user = firebaseAuth.getCurrentUser();
++                if (user !=null){
++                    getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
++                }else{
++
++                }
++
++            }
++        };
++
+         ButterKnife.bind(this);
+         Button button = (Button)findViewById(R.id.button);
+         button.setOnClickListener(new View.OnClickListener(){
+             @Override
+             public void onClick(View v) {
+-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
++                Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+                 startActivity(intent);
+             }
+         });
+ 
++    }
++
++    //inflating the menu
++    @Override
++    public boolean onCreateOptionsMenu(Menu menu) {
++        MenuInflater inflater = getMenuInflater();
++        inflater.inflate(R.menu.menu_main, menu);
++        return super.onCreateOptionsMenu(menu);
++    }
++
++    @Override
++    public boolean onOptionsItemSelected(MenuItem item){
++        int id = item.getItemId();
++        if(id == R.id.action_logout){
++            logout();
++            return true;
++        }
++        return super.onOptionsItemSelected(item);
++    }
++
++    private void logout(){
++        FirebaseAuth.getInstance().signOut();
++        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
++        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
++        startActivity(intent);
++        finish();
+     }
+ 
+ }
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\n    id 'com.android.application'\n    id 'com.google.gms.google-services'\n}\n\nandroid {\n    compileSdk 32\n\n    defaultConfig {\n        applicationId \"com.moringaschool.sassygal\"\n        minSdk 28\n        targetSdk 32\n        versionCode 1\n        versionName \"1.0\"\n\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\n    }\n\n    buildTypes {\n        release {\n            minifyEnabled false\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\n        }\n    }\n    compileOptions {\n        sourceCompatibility JavaVersion.VERSION_1_8\n        targetCompatibility JavaVersion.VERSION_1_8\n    }\n}\n\ndependencies {\n\n    implementation 'androidx.appcompat:appcompat:1.4.2'\n    implementation 'com.google.android.material:material:1.6.1'\n    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'\n    testImplementation 'junit:junit:4.13.2'\n    androidTestImplementation 'androidx.test:runner:1.4.0'\n    androidTestImplementation 'androidx.test:rules:1.4.0'\n    androidTestImplementation 'androidx.test.ext:junit:1.1.3'\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'\n    implementation 'com.jakewharton:butterknife:10.2.0'\n    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'\n    testImplementation \"org.robolectric:robolectric:4.8.1\"\n\n    implementation 'androidx.appcompat:appcompat:1.6.0-alpha04'\n\n    implementation 'androidx.cardview:cardview:1.0.0'\n    implementation 'com.squareup.retrofit2:retrofit:2.5.0'\n    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'\n    implementation 'com.github.bumptech.glide:glide:4.13.0'\n    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'\n    implementation 'androidx.recyclerview:recyclerview:1.2.1'\n    //    Firebase\n    implementation platform('com.google.firebase:firebase-bom:26.4.0')\n    implementation 'com.google.firebase:firebase-analytics'\n    implementation 'com.google.firebase:firebase-database'\n    implementation 'com.firebaseui:firebase-ui-database:7.1.1'\n    implementation 'com.google.firebase:firebase-auth'\n\n\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	(revision 0b01a029fc7a831dce7559c3c2c9060f2529874d)
++++ b/app/build.gradle	(date 1654935634335)
+@@ -15,6 +15,18 @@
+ 
+         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+     }
++    packagingOptions {
++        exclude 'META-INF/DEPENDENCIES.txt'
++        exclude 'META-INF/DEPENDENCIES'
++        exclude 'META-INF/dependencies.txt'
++        exclude 'META-INF/LICENSE.txt'
++        exclude 'META-INF/LICENSE'
++        exclude 'META-INF/license.txt'
++        exclude 'META-INF/LGPL2.1'
++        exclude 'META-INF/NOTICE.txt'
++        exclude 'META-INF/NOTICE'
++        exclude 'META-INF/notice.txt'
++    }
+ 
+     buildTypes {
+         release {
+Index: app/src/main/java/com/moringaschool/sassygal/ui/RegisterActivity.java
+===================================================================
+diff --git a/app/src/main/java/com/moringaschool/sassygal/ui/RegisterActivity.java b/app/src/main/java/com/moringaschool/sassygal/ui/RegisterActivity.java
+deleted file mode 100644
+--- a/app/src/main/java/com/moringaschool/sassygal/ui/RegisterActivity.java	(revision 0b01a029fc7a831dce7559c3c2c9060f2529874d)
++++ /dev/null	(revision 0b01a029fc7a831dce7559c3c2c9060f2529874d)
+@@ -1,95 +0,0 @@
+-package com.moringaschool.sassygal.ui;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-
+-import android.content.Intent;
+-import android.os.Bundle;
+-import android.view.View;
+-import android.widget.Button;
+-import android.widget.EditText;
+-import android.widget.TextView;
+-import android.widget.Toast;
+-
+-import com.moringaschool.sassygal.R;
+-
+-import butterknife.BindView;
+-import butterknife.ButterKnife;
+-
+-public class RegisterActivity extends AppCompatActivity {
+-
+-    //declaring the properties in Register activity
+-    @BindView(R.id.textView4)
+-    TextView btn;
+-    @BindView(R.id.editTextTextPersonName2)
+-    EditText textPersonName2;
+-    @BindView(R.id.editTextTextEmailAddress)
+-    EditText textEmailAddress;
+-    @BindView(R.id.editTextTextPassword)
+-    EditText textPassword;
+-    @BindView(R.id.button3)
+-    Button btnRegister;
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_register);
+-        //binding the properties using butterknife
+-        ButterKnife.bind(this);
+-
+-        btn.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View v) {
+-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+-            }
+-        });
+-      
+-
+-        //onclickListener method for the button
+-        btnRegister.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View v) {
+-                if(checkCredentials()){
+-                    Intent intent = new Intent(RegisterActivity.this, ProductSearchActivity.class);
+-                    startActivity(intent);
+-                }
+-
+-            }
+-        });
+-
+-    }
+-
+-    //method to check the register method credentials
+-    private boolean checkCredentials() {
+-        String personName2 = textPersonName2.getText().toString();
+-        String emailAddress = textEmailAddress.getText().toString();
+-        String password = textPassword.getText().toString();
+-        boolean isCorrect = false;
+-
+-        if (personName2.isEmpty()  || !personName2.contains("@")){
+-            showError("Name is not valid");
+-
+-        }else if (emailAddress.isEmpty()  || !emailAddress.contains("@")){
+-                showError("Email is not valid");
+-
+-        }else if(password.isEmpty()  ||password.length()<3){
+-            showError("Password must be 3 characters");
+-        }else{
+-            //create a toast popup for the Register method
+-            Toast.makeText(this, "Register method", Toast.LENGTH_SHORT).show();
+-            isCorrect = true;
+-        }
+-        return isCorrect;
+-    }
+-
+-
+-
+-    //method to show error
+-    private void showError( String string) {
+-        Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
+-
+-
+-    }
+-
+-
+-}
+-
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_01_06_22_20_38__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_06_22_20_38__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_06_22_20_38__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_06_22_20_38__Changes_.xml	(revision 0b01a029fc7a831dce7559c3c2c9060f2529874d)
++++ /dev/null	(revision 0b01a029fc7a831dce7559c3c2c9060f2529874d)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_01_06_22_20_38_[Changes]" date="1654105098405" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_06_22_20_38_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 01/06/22 20:38 [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_register.xml
+===================================================================
+diff --git a/app/src/main/res/layout/activity_register.xml b/app/src/main/res/layout/activity_register.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout/activity_register.xml	(revision 0b01a029fc7a831dce7559c3c2c9060f2529874d)
++++ /dev/null	(revision 0b01a029fc7a831dce7559c3c2c9060f2529874d)
+@@ -1,102 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".ui.RegisterActivity">
+-
+-    <TextView
+-        android:id="@+id/logintext"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="80dp"
+-        android:layout_marginTop="48dp"
+-        android:text="Register"
+-        android:textColor="@color/pink"
+-        android:textSize="23sp"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
+-
+-    <EditText
+-        android:id="@+id/editTextTextPersonName2"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="56dp"
+-        android:layout_marginBottom="58dp"
+-        android:drawableLeft="@drawable/ic_baseline_person"
+-        android:drawablePadding="10dp"
+-        android:ems="10"
+-        android:inputType="textPersonName"
+-        android:text="Name"
+-        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/logintext" />
+-
+-    <EditText
+-        android:id="@+id/editTextTextEmailAddress"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="56dp"
+-        android:layout_marginBottom="44dp"
+-        android:drawableLeft="@drawable/ic_baseline_email_24"
+-        android:drawablePadding="10dp"
+-        android:ems="10"
+-        android:hint="rachel@raych.com"
+-        android:inputType="textEmailAddress"
+-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
+-        app:layout_constraintStart_toStartOf="parent" />
+-
+-    <EditText
+-        android:id="@+id/editTextTextPassword"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="2dp"
+-        android:layout_marginBottom="388dp"
+-        android:drawableLeft="@drawable/ic_baseline_security_24"
+-        android:drawablePadding="10dp"
+-        android:ems="10"
+-        android:hint="password"
+-        android:inputType="textPassword"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress" />
+-
+-    <Button
+-        android:id="@+id/button3"
+-        android:layout_width="0dp"
+-        android:layout_height="wrap_content"
+-        android:layout_marginTop="44dp"
+-        android:layout_marginEnd="208dp"
+-        android:background="@color/pink"
+-        android:text="Register"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+-
+-    <TextView
+-        android:id="@+id/textView3"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="51dp"
+-        android:layout_marginTop="35dp"
+-        android:layout_marginEnd="49dp"
+-        android:text="Already have an account?"
+-        android:textSize="15sp"
+-        app:layout_constraintEnd_toStartOf="@+id/textView4"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+-
+-    <TextView
+-        android:id="@+id/textView4"
+-        android:layout_width="0dp"
+-        android:layout_height="17dp"
+-        android:layout_marginEnd="39dp"
+-        android:autoLink="web"
+-        android:clickable="true"
+-        android:linksClickable="true"
+-        android:text="Login"
+-        android:textColor="@color/pink"
+-        app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintStart_toEndOf="@+id/textView3" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"DesignSurface\">\n    <option name=\"filePathToZoomLevelMap\">\n      <map>\n        <entry key=\"../../../../layout/custom_preview.xml\" value=\"0.1\" />\n        <entry key=\"app/src/main/res/drawable/ic_baseline_email_24.xml\" value=\"0.1\" />\n        <entry key=\"app/src/main/res/drawable/ic_baseline_person.xml\" value=\"0.1\" />\n        <entry key=\"app/src/main/res/drawable/ic_launcher_background.xml\" value=\"0.1\" />\n        <entry key=\"app/src/main/res/layout/activity_login.xml\" value=\"0.17864583333333334\" />\n        <entry key=\"app/src/main/res/layout/activity_login2.xml\" value=\"0.25\" />\n        <entry key=\"app/src/main/res/layout/activity_main.xml\" value=\"0.18\" />\n        <entry key=\"app/src/main/res/layout/activity_product_list.xml\" value=\"0.19375\" />\n        <entry key=\"app/src/main/res/layout/activity_product_search.xml\" value=\"0.22\" />\n        <entry key=\"app/src/main/res/layout/activity_product_strip.xml\" value=\"0.18\" />\n        <entry key=\"app/src/main/res/layout/activity_recycler.xml\" value=\"0.13496376811594202\" />\n        <entry key=\"app/src/main/res/layout/activity_register.xml\" value=\"0.25\" />\n        <entry key=\"app/src/main/res/layout/activity_search_brand.xml\" value=\"0.13496376811594202\" />\n        <entry key=\"app/src/main/res/layout/activity_search_products.xml\" value=\"0.17864583333333334\" />\n        <entry key=\"app/src/main/res/layout/activity_search_products2.xml\" value=\"0.13496376811594202\" />\n        <entry key=\"app/src/main/res/layout/activity_search_results.xml\" value=\"0.1213768115942029\" />\n        <entry key=\"app/src/main/res/layout/activity_view_products.xml\" value=\"0.19375\" />\n        <entry key=\"app/src/main/res/layout/fragment_product.xml\" value=\"0.22\" />\n        <entry key=\"app/src/main/res/layout/fragment_search.xml\" value=\"0.25\" />\n        <entry key=\"app/src/main/res/layout/login.xml\" value=\"0.17864583333333334\" />\n        <entry key=\"app/src/main/res/layout/product_strip.xml\" value=\"0.1322463768115942\" />\n      </map>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"Android Studio default JDK\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 0b01a029fc7a831dce7559c3c2c9060f2529874d)
++++ b/.idea/misc.xml	(date 1655062347499)
+@@ -7,6 +7,7 @@
+         <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1" />
+         <entry key="app/src/main/res/drawable/ic_baseline_person.xml" value="0.1" />
+         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
++        <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.22" />
+         <entry key="app/src/main/res/layout/activity_login.xml" value="0.17864583333333334" />
+         <entry key="app/src/main/res/layout/activity_login2.xml" value="0.25" />
+         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
+@@ -24,6 +25,8 @@
+         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.25" />
+         <entry key="app/src/main/res/layout/login.xml" value="0.17864583333333334" />
+         <entry key="app/src/main/res/layout/product_strip.xml" value="0.1322463768115942" />
++        <entry key="app/src/main/res/menu/main_menu.xml" value="0.22" />
++        <entry key="app/src/main/res/menu/menu_main.xml" value="0.19375" />
+       </map>
+     </option>
+   </component>
