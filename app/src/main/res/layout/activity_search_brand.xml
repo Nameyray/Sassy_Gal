@@ -4,19 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img"
     tools:context=".ui.SearchBrandActivity">
+
 
     <SearchView
         android:id="@+id/search_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="314dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="55dp"
+        android:autofillHints="Maybelline"
+        android:outlineAmbientShadowColor="@color/black"
+        android:outlineSpotShadowColor="@color/black"
+        android:queryHint="Maybelline"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -34,50 +40,29 @@
 
     <Button
         android:id="@+id/search_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="63dp"
-        android:layout_marginEnd="31dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="372dp"
+        android:layout_marginEnd="20dp"
         android:background="@color/pink"
         android:text="Search"
         android:textColor="@android:color/black"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_view" />
 
     <Button
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/fav"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="63dp"
-        android:background="@color/pink"
-        android:text="Go back"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/search_view" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="180dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="32dp"
-        android:src="@drawable/img_1"
-        app:layout_constraintBottom_toTopOf="@+id/search_view"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/blue"
+        android:text="Favourite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="40dp"
-        android:text="Find a brand"
-        android:textColor="@color/pink"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/search_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
