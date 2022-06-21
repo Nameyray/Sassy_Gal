@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.moringaschool.sassygal.R;
@@ -51,6 +52,7 @@ public class ViewProducts extends AppCompatActivity {
                   RecyclerAdapter recyclerAdapter = new RecyclerAdapter(getApplicationContext(), response.body());
                   LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                   recycler.setLayoutManager(linearLayoutManager);
+//                  recycler.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this,R.anim.down_to_up_layout_animation));
                   recycler.setAdapter(recyclerAdapter);
               }
             }
