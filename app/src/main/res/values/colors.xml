@@ -8,4 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="pink">#E966B3</color>
+    <color name="yellow">#FFCC00</color>
+    <color name="blue">#ADD8E6</color>
+    <color name="Purple">#5F4B8BFF</color>
+    <color name="petalPink">#FFBBBB</color>
+    <color name="BlackBerryBliss">#4e234a</color>
+
 </resources>

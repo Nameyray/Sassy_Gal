@@ -68,6 +68,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.firebaseui:firebase-ui-database:7.1.1'
     implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.daimajia.androidanimations:library:2.4@aar'
+    implementation "com.airbnb.android:lottie:5.2.0"
+    // Parceler
+    implementation 'org.parceler:parceler-api:1.1.12'
+    annotationProcessor 'org.parceler:parceler:1.1.12'
+    implementation 'com.squareup.picasso:picasso:2.8'
+
 
 
 

@@ -16,7 +16,10 @@ import com.bumptech.glide.Glide;
 import com.moringaschool.sassygal.R;
 import com.moringaschool.sassygal.models.ProductColor;
 import com.moringaschool.sassygal.models.Response;
+import com.moringaschool.sassygal.ui.MakeupDetailActivity;
 import com.moringaschool.sassygal.ui.ViewProducts;
+
+import org.parceler.Parcels;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -75,7 +78,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyHold
         return list.size();
     }
 //creating the inner class with its constructor//
-    class MyHolder extends RecyclerView.ViewHolder{
+    class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.title)
         TextView title;
         @BindView(R.id.desc)
@@ -86,6 +89,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyHold
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+            itemView.setOnClickListener(this);
         }
+
+    @Override
+    public void onClick(View v) {
+        int itemPosition = getLayoutPosition();
+        Intent intent = new Intent(context, MakeupDetailActivity.class);
+        intent.putExtra("position", itemPosition);
+        intent.putExtra("makeups", Parcels.wrap(list));
+        context.startActivity(intent);
+
     }
+}
 }

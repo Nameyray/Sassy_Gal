@@ -104,10 +104,14 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
         if (view == btnRegister){
             createNewUser();
+            Intent intent = new Intent(CreateAccountActivity.this, WelcomeActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         }
 
         if (view == btnData){
-            Intent intent = new Intent(CreateAccountActivity.this, ProductSearchActivity.class);
+            Intent intent = new Intent(CreateAccountActivity.this, ShowDataActivity.class);
         }
 
     }

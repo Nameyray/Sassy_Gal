@@ -9,8 +9,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.sassygal.R;
@@ -18,18 +18,18 @@ import com.moringaschool.sassygal.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    @BindView(R.id.button)
-    Button button;
-
-
+    @BindView(R.id.animationView)
+    LottieAnimationView lottie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_welcome);
+
+        ButterKnife.bind(this);
         ButterKnife.bind(this);
 
         mAuth = FirebaseAuth.getInstance();
@@ -47,18 +47,14 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-
-        Button button = (Button)findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener(){
+        lottie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ProductSearchActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, SearchBrandActivity.class);
                 startActivity(intent);
             }
         });
-
     }
-
     //inflating the menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -76,20 +72,13 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-   //method to logout a user if they do
+    //method to logout a user if they do
     private void logout(){
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
 
 }
-
-
-
-
-
-
-

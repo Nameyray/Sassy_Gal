@@ -1,4 +1,3 @@
-
 package com.moringaschool.sassygal.models;
 
 import java.io.Serializable;
@@ -70,13 +69,13 @@ public class Response implements Serializable {
 
     /**
      * No args constructor for use in serialization
-     * 
+     *
      */
     public Response() {
     }
 
     /**
-     * 
+     *
      * @param apiFeaturedImage
      * @param websiteLink
      * @param productColors
